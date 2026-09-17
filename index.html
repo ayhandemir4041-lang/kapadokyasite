@@ -233,140 +233,116 @@
   .section-head h2{ font-size: clamp(1.6rem, 3vw, 2.2rem); }
   .section-head p{ max-width: 40ch; color: var(--sand-dim); font-size: 0.96rem; margin-top:6px; }
 
-  /* ---------- Cards (Erila-style boxed panels) ---------- */
+  /* ---------- Cards ---------- */
   .card-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 22px;
   }
   .card{
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 30px 26px;
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    padding: 28px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .card:hover{ border-color: rgba(242,147,74,0.5); transform: translateY(-3px); }
+  .card:hover{ transform: translateY(-4px); border-color: var(--terracotta); }
   .card .icon{
-    width:46px; height:46px;
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    background: rgba(217,119,47,0.14);
     display:flex; align-items:center; justify-content:center;
-    border-radius: 12px;
-    background: rgba(217,119,47,0.15);
+    font-family:'Baloo 2', sans-serif; font-weight:700;
     color: var(--terracotta-bright);
-    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.15rem;
     margin-bottom: 18px;
   }
-  .card h3{ font-size: 1.15rem; margin-bottom: 10px; color: var(--sand); }
+  .card h3{ font-size: 1.1rem; margin-bottom: 10px; }
   .card p{ color: var(--sand-dim); font-size: 0.92rem; }
 
   /* ---------- News ---------- */
-  .news-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .news-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px;
+  }
   .news-card{
-    border-radius: 14px;
-    overflow:hidden;
     background: var(--panel);
     border: 1px solid var(--line);
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    border-radius: 14px;
+    overflow:hidden;
   }
-  .news-card:hover{ border-color: rgba(242,147,74,0.5); transform: translateY(-3px); }
   .news-card .thumb{
-    height: 140px;
-    background: linear-gradient(135deg, var(--panel-2), #0c1018);
+    height: 160px;
+    background: var(--panel-2);
     display:flex; align-items:center; justify-content:center;
   }
-  .news-card .thumb img{ width:56px; height:56px; border-radius:50%; opacity:0.9; }
-  .news-card .tag{ padding: 20px 22px 0; font-size: 0.74rem; font-weight:700; color: var(--terracotta-bright); }
-  .news-card h3{ padding: 8px 22px 0; font-size: 1.1rem; line-height: 1.3; }
-  .news-card p{ padding: 10px 22px 22px; color: var(--sand-dim); font-size: 0.88rem; }
+  .news-card .thumb img{ width:64px; height:64px; border-radius:50%; opacity:0.6; }
+  .news-card .tag{
+    display:inline-block; margin: 18px 20px 0;
+    padding: 4px 12px; border-radius: 20px;
+    background: rgba(217,119,47,0.14); color: var(--terracotta-bright);
+    font-size: 0.75rem; font-weight:700;
+  }
+  .news-card h3{ margin: 12px 20px 8px; font-size: 1.05rem; }
+  .news-card p{ margin: 0 20px 20px; color: var(--sand-dim); font-size: 0.9rem; }
 
   /* ---------- Leaderboard ---------- */
-  .board-tabs{ display:flex; gap:10px; margin-bottom:24px; }
+  .board-tabs{ display:flex; gap:10px; margin-bottom: 26px; }
   .board-tab{
-    padding:8px 18px; border-radius:20px; font-size:0.82rem; font-weight:700;
-    background: var(--panel); border:1px solid var(--line); color:var(--sand-dim);
+    padding: 8px 18px; border-radius: 20px; font-size:0.85rem; font-weight:700;
+    border: 1px solid var(--line); color: var(--sand-dim); cursor:pointer;
   }
-  .board-tab.active{ background: rgba(217,119,47,0.18); border-color:var(--terracotta); color:var(--terracotta-bright); }
+  .board-tab.active{ background: var(--terracotta); color:#1a0e05; border-color:transparent; }
 
-  .board-table{
-    width:100%; border-collapse:collapse;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    overflow:hidden;
-  }
+  .board-table{ width:100%; border-collapse:collapse; margin-bottom: 40px; }
   .board-table th{
-    text-align:left; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em;
-    color:var(--sand-dim); font-weight:700;
-    padding: 16px 20px; background: var(--panel-2);
+    text-align:left; padding: 12px 16px; font-size:0.8rem; color: var(--sand-dim);
+    border-bottom: 1px solid var(--line);
   }
-  .board-table td{ padding: 16px 20px; border-top:1px solid var(--line); font-size:0.92rem; }
-  .board-table td.rank-cell{ font-family:'Baloo 2',sans-serif; color:var(--gold); width:40px; font-weight:700; }
-  .board-table td.name-cell{ color:var(--sand); font-weight:700; }
-  .board-table td.amt-cell{ color:var(--terracotta-bright); text-align:right; font-weight:700; }
+  .board-table td{ padding: 14px 16px; border-bottom: 1px solid var(--line); font-size:0.92rem; }
+  .rank-cell{ font-family:'Baloo 2',sans-serif; color: var(--gold); font-weight:700; }
+  .amt-cell{ text-align:right; color: var(--terracotta-bright); font-weight:700; }
 
-  .board-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
-  .board{ background: var(--panel); border:1px solid var(--line); border-radius:14px; padding: 24px; }
-  .board h3{
-    font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--sand-dim); margin-bottom: 18px; font-weight: 700;
-  }
-  .board-row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding: 14px 0; border-top: 1px solid var(--line);
-  }
-  .board-row:first-of-type{ border-top:none; }
-  .board-row .who{ display:flex; align-items:baseline; gap: 12px; }
-  .board-row .rank{ color: var(--terracotta); font-size: 0.9rem; }
-  .board-row .name{ color: var(--sand); font-weight:700; }
-  .board-row .amt{ color: var(--sand-dim); font-size: 0.88rem; }
-
-  .empty-note{
-    color: var(--sand-dim); font-size: 0.86rem; font-style: italic;
-    padding: 26px 0; text-align: center;
-    border: 1px dashed var(--line); border-radius: 12px; margin-top: 16px;
-  }
+  .board-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .board{ background: var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .board h3{ font-size:1rem; margin-bottom:16px; }
+  .board-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:0.9rem; }
+  .board-row:last-child{ border-bottom:none; }
+  .board-row .who{ display:flex; align-items:center; gap:10px; color: var(--sand-dim); }
+  .board-row .rank{ color: var(--terracotta-bright); }
+  .board-row .amt{ color: var(--gold); font-weight:700; }
+  .empty-note{ margin-top: 20px; color: var(--sand-dim); font-size:0.85rem; text-align:center; }
 
   /* ---------- About ---------- */
-  .about{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
+  .about{ display:grid; grid-template-columns: 340px 1fr; gap: 50px; align-items:center; }
   .about-visual{
-    aspect-ratio: 1/1;
-    border-radius: 20px;
-    overflow:hidden;
-    border: 1px solid var(--line);
-    background: var(--panel);
+    aspect-ratio: 1; border-radius: 20px;
+    background: var(--panel); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center;
-    padding: 30px;
   }
-  .about-visual img{ width:100%; height:100%; object-fit:contain; }
-  .about h2{ font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-bottom: 18px; }
-  .about p{ color: var(--sand-dim); margin-bottom: 14px; max-width: 52ch; }
+  .about-visual img{ width: 70%; opacity:0.85; }
+  .about h2{ margin-bottom: 18px; }
+  .about p{ color: var(--sand-dim); margin-bottom: 14px; font-size:0.98rem; }
 
-  /* ---------- CTA banner ---------- */
+  /* ---------- Banner ---------- */
   .banner{
-    padding: 80px 6vw; text-align:center;
-    background: linear-gradient(180deg, transparent, rgba(217,119,47,0.08), transparent);
+    text-align:center;
+    background: linear-gradient(135deg, rgba(217,119,47,0.14), rgba(226,87,31,0.08));
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  .banner h2{ font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
-  .banner p{ color: var(--sand-dim); margin-bottom: 34px; }
+  .banner h2{ margin-bottom: 14px; }
+  .banner p{ color: var(--sand-dim); max-width: 46ch; margin: 0 auto 30px; }
 
   /* ---------- Footer ---------- */
   footer{
-    padding: 56px 6vw 36px;
-    display:grid; grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 40px; border-top: 1px solid var(--line);
+    padding: 60px 6vw 30px;
+    display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+    border-top: 1px solid var(--line);
   }
-  footer h4{
-    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--sand-dim); margin-bottom: 16px; font-weight:700;
-  }
+  footer h4{ font-size:0.9rem; margin-bottom:16px; color: var(--sand); }
   footer ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
   footer a{ color: var(--sand-dim); font-size: 0.9rem; transition:color 0.2s ease; }
   footer a:hover{ color: var(--terracotta-bright); }
   .foot-bottom{
-    padding: 22px 6vw; display:flex; justify-content:space-between;
-    font-size: 0.8rem; color: var(--sand-dim); border-top: 1px solid var(--line);
-    flex-wrap: wrap; gap: 10px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding: 20px 6vw 40px; color: var(--sand-dim); font-size:0.78rem;
+    border-top: 1px solid var(--line);
   }
 
   @media (max-width: 880px){
@@ -550,4 +526,35 @@
       <img src="logo.png" alt="Kapadokya Network logosu" style="width:36px;height:36px;">
       Kapadokya Network
     </div>
-    <p style="color:var(--sand-dim); max-width:36ch; font-size:0.9rem;">Bedrock oyuncuları için Anadolu'
+    <p style="color:var(--sand-dim); max-width:36ch; font-size:0.9rem;">Bedrock oyuncuları için Anadolu'dan ilham alan SkyBlock deneyimi.</p>
+  </div>
+  <div>
+    <h4>Sunucu</h4>
+    <ul>
+      <li><a href="#topluluk">Liderlik</a></li>
+      <li><a href="#haberler">Haberler</a></li>
+      <li><a href="#hakkinda">Hakkımızda</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Topluluk</h4>
+    <ul>
+      <li><a href="https://discord.gg/kapadokyanetwork">Discord</a></li>
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="foot-bottom">
+  <span>&copy; 2026 Kapadokya Network. Tüm hakları saklıdır.</span>
+  <span>Minecraft ile bağlantılı değildir. Mojang AB'nin bir ürünü değildir.</span>
+</div>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navClose = document.getElementById('navClose');
+  const mobilePanel = document.getElementById('mobilePanel');
+  function openPanel(){
+    mobilePanel.classList.add('open');
+    navToggle.classList.add('open');
+    document.body.
