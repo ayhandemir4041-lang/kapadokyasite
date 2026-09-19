@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sipariş Özeti — Kapadokya Network</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{
+  --bg: #0a0d16;
+  --bg-2: #0f1420;
+  --panel: #131a29;
+  --panel-2: #171f31;
+  --line: rgba(233,167,110,0.14);
+  --sand: #f1e6d3;
+  --sand-dim: #9aa3b8;
+  --terracotta: #d9772f;
+  --terracotta-bright: #f2934a;
+  --ember: #e2571f;
+  --gold: #f0b545;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  background: var(--bg);
+  color: var(--sand);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+}
+h1,h2,h3{ font-family:'Baloo 2', sans-serif; font-weight:700; }
+a{color:inherit; text-decoration:none;}
+.sky{
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(217,119,47,0.16), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 90% 10%, rgba(226,87,31,0.10), transparent 55%),
+    linear-gradient(180deg, #05070d 0%, #0a0d16 45%, #0c1018 100%);
+}
+header{
+  display:flex; align-items:center; justify-content:center;
+  padding: 20px 6vw;
+  border-bottom: 1px solid var(--line);
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-family:'Baloo 2', sans-serif; font-size: 1.15rem; font-weight:700;
+}
+.brand img{ width:38px; height:38px; border-radius:50%; box-shadow: 0 0 0 2px rgba(240,181,69,0.4); }
+
+main{ flex:1; display:flex; align-items:center; justify-content:center; padding: 50px 6vw; }
+
+.order-card{
+  width:100%; max-width: 460px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 36px 32px;
+}
+.order-card .eyebrow{
+  font-size:0.8rem; font-weight:700; color: var(--terracotta-bright);
+  text-transform:uppercase; letter-spacing:0.04em; margin-bottom:6px;
+}
+.order-card h1{ font-size:1.5rem; margin-bottom: 24px; }
+
+.row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+  font-size:0.96rem;
+}
+.row .lbl{ color: var(--sand-dim); }
+.row .val{ font-weight:700; }
+.row.total{ border-bottom:none; padding-top:20px; }
+.row.total .lbl{ color: var(--sand); font-size:1.05rem; font-weight:700; }
+.row.total .val{ color: var(--gold); font-family:'Baloo 2',sans-serif; font-size:1.5rem; }
+
+.method{
+  margin-top: 18px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size:0.92rem;
+}
+.method .tag{
+  padding: 4px 12px; border-radius: 20px;
+  background: rgba(217,119,47,0.14); color: var(--terracotta-bright);
+  font-size:0.78rem; font-weight:700;
+}
+
+.pay-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; margin-top: 28px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--terracotta-bright), var(--ember));
+  color:#1a0e05; font-weight:800; border:none; cursor:pointer;
+  border-radius: 12px; font-size: 1.02rem; font-family:'Manrope',sans-serif;
+  box-shadow: 0 10px 28px rgba(226,87,31,0.32);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pay-btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(226,87,31,0.42); }
+.pay-btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
+
+.back-link{
+  display:block; text-align:center; margin-top:18px;
+  color: var(--sand-dim); font-size:0.86rem;
+}
+.back-link:hover{ color: var(--terracotta-bright); }
+
+.note{
+  margin-top: 22px; color: var(--sand-dim); font-size:0.8rem; text-align:center;
+}
+
+.error-box{
+  text-align:center; padding: 60px 20px; color: var(--sand-dim);
+}
+.error-box a{ color: var(--terracotta-bright); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+
+<header>
+  <a href="index.html" class="brand">
+    <img src="logo.png" alt="Kapadokya Network logosu">
+    Kapadokya Network
+  </a>
+</header>
+
+<main id="mainArea"></main>
+
+<script>
+// Aynı liste magaza.html ile tutarlı olmalı
+const PAKETLER = {
+  "1kredi":  { isim: "1 Kredi",  kredi: 1,  fiyat: 2.5,  shopierUrl: "https://www.shopier.com/ODEME_LINKI_1_KREDI" },
+  "15kredi": { isim: "15 Kredi", kredi: 15, fiyat: 37.5, shopierUrl: "https://www.shopier.com/ODEME_LINKI_15_KREDI" }
+};
+
+const params = new URLSearchParams(window.location.search);
+const paketId = params.get('paket');
+const paket = PAKETLER[paketId];
+const mainArea = document.getElementById('mainArea');
+
+if (!paket) {
+  mainArea.innerHTML = `
+    <div class="error-box">
+      <h1 style="margin-bottom:14px;">Paket bulunamadı</h1>
+      <p>Lütfen mağazadan geçerli bir paket seç.</p>
+      <p style="margin-top:18px;"><a href="magaza.html">← Mağazaya dön</a></p>
+    </div>
+  `;
+} else {
+  mainArea.innerHTML = `
+    <div class="order-card">
+      <div class="eyebrow">Sipariş Özeti</div>
+      <h1>${paket.isim}</h1>
+
+      <div class="row">
+        <span class="lbl">Ürün</span>
+        <span class="val">${paket.isim}</span>
+      </div>
+      <div class="row">
+        <span class="lbl">Birim Fiyat</span>
+        <span class="val">2.5 TL / kredi</span>
+      </div>
+      <div class="row total">
+        <span class="lbl">Toplam</span>
+        <span class="val">${paket.fiyat.toFixed(2).replace('.00','')} TL</span>
+      </div>
+
+      <div class="method">
+        <span>Ödeme Yöntemi</span>
+        <span class="tag">Shopier</span>
+      </div>
+
+      <button class="pay-btn" id="payBtn">Ödemeye Geç</button>
+      <a href="magaza.html" class="back-link">← Mağazaya dön</a>
+      <p class="note">Ödeme sayfasına yönlendirileceksin. Shopier üzerinde ödemeyi tamamladıktan sonra kredin hesabına tanımlanacak.</p>
+    </div>
+  `;
+
+  document.getElementById('payBtn').addEventListener('click', () => {
+    window.location.href = paket.shopierUrl;
+  });
+}
+</script>
+</body>
+</html>
