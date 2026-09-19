@@ -147,14 +147,14 @@ nav a:hover, nav a.active{ color: var(--terracotta-bright); }
 /* ---------- Store grid ---------- */
 section.store{ padding: 40px 6vw 100px; }
 .pack-grid{
-  display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 24px;
-  max-width: 900px; margin: 0 auto;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px;
+  max-width: 1200px; margin: 0 auto;
 }
 .pack{
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 32px 28px;
+  padding: 28px 22px;
   text-align:center;
   position:relative;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -321,8 +321,14 @@ footer a:hover{ color: var(--terracotta-bright); }
 <script>
 // Paket listesi — yeni paket eklemek için buraya bir satır ekle
 const PAKETLER = [
-  { id: "1kredi",  isim: "1 Kredi",  aciklama: "Küçük bir başlangıç için ideal.", kredi: 1,  fiyat: 2.5 },
-  { id: "15kredi", isim: "15 Kredi", aciklama: "En çok tercih edilen paket.",       kredi: 15, fiyat: 37.5, popular: true }
+  { id: "1kredi",   isim: "1 Kredi",   aciklama: "Küçük bir başlangıç için ideal.",     kredi: 1,   fiyat: 1 },
+  { id: "15kredi",  isim: "15 Kredi",  aciklama: "En çok tercih edilen paket.",         kredi: 15,  fiyat: 15,  popular: true },
+  { id: "30kredi",  isim: "30 Kredi",  aciklama: "Daha fazla harcama gücü.",            kredi: 30,  fiyat: 30 },
+  { id: "50kredi",  isim: "50 Kredi",  aciklama: "Rahat bir başlangıç paketi.",         kredi: 50,  fiyat: 50 },
+  { id: "80kredi",  isim: "80 Kredi",  aciklama: "Aktif oyuncular için ideal.",         kredi: 80,  fiyat: 80 },
+  { id: "100kredi", isim: "100 Kredi", aciklama: "Sunucuda geniş imkanlar.",            kredi: 100, fiyat: 100 },
+  { id: "200kredi", isim: "200 Kredi", aciklama: "Büyük yatırım, büyük avantaj.",       kredi: 200, fiyat: 200 },
+  { id: "500kredi", isim: "500 Kredi", aciklama: "En yüksek paket — tam güç.",          kredi: 500, fiyat: 500 }
 ];
 
 const grid = document.getElementById('packGrid');
