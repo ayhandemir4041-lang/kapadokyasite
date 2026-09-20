@@ -132,9 +132,10 @@ main{ flex:1; display:flex; align-items:center; justify-content:center; padding:
 
 <script>
 // Aynı liste magaza.html ile tutarlı olmalı
+// NOT: shopierUrl "ODEME_LINKI_..." içerenler henüz gerçek link değil — Shopier'de o paketi oluşturup linkini alınca burayı güncelle.
 const PAKETLER = {
-  "1kredi":   { isim: "1 Kredi",   kredi: 1,   fiyat: 1,   shopierUrl: "https://www.shopier.com/ODEME_LINKI_1_KREDI" },
-  "15kredi":  { isim: "15 Kredi",  kredi: 15,  fiyat: 15,  shopierUrl: "https://www.shopier.com/ODEME_LINKI_15_KREDI" },
+  "1kredi":   { isim: "1 Kredi",   kredi: 1,   fiyat: 1,   shopierUrl: "https://www.shopier.com/kapadokyanetwork/51043106" },
+  "15kredi":  { isim: "15 Kredi",  kredi: 15,  fiyat: 15,  shopierUrl: "https://www.shopier.com/kapadokyanetwork/51043153" },
   "30kredi":  { isim: "30 Kredi",  kredi: 30,  fiyat: 30,  shopierUrl: "https://www.shopier.com/ODEME_LINKI_30_KREDI" },
   "50kredi":  { isim: "50 Kredi",  kredi: 50,  fiyat: 50,  shopierUrl: "https://www.shopier.com/ODEME_LINKI_50_KREDI" },
   "80kredi":  { isim: "80 Kredi",  kredi: 80,  fiyat: 80,  shopierUrl: "https://www.shopier.com/ODEME_LINKI_80_KREDI" },
@@ -147,6 +148,8 @@ const params = new URLSearchParams(window.location.search);
 const paketId = params.get('paket');
 const paket = PAKETLER[paketId];
 const mainArea = document.getElementById('mainArea');
+
+const linkHazirDegil = paket && paket.shopierUrl.includes('ODEME_LINKI');
 
 if (!paket) {
   mainArea.innerHTML = `
@@ -176,15 +179,19 @@ if (!paket) {
         <span class="tag">Shopier</span>
       </div>
 
-      <button class="pay-btn" id="payBtn">Ödemeye Geç</button>
+      <button class="pay-btn" id="payBtn" ${linkHazirDegil ? 'disabled' : ''}>
+        ${linkHazirDegil ? 'Yakında Aktif' : 'Ödemeye Geç'}
+      </button>
       <a href="magaza.html" class="back-link">← Mağazaya dön</a>
       <p class="note">Ödeme sayfasına yönlendirileceksin. Shopier üzerinde ödemeyi tamamladıktan sonra kredin hesabına tanımlanacak.</p>
     </div>
   `;
 
-  document.getElementById('payBtn').addEventListener('click', () => {
-    window.location.href = paket.shopierUrl;
-  });
+  if (!linkHazirDegil) {
+    document.getElementById('payBtn').addEventListener('click', () => {
+      window.location.href = paket.shopierUrl;
+    });
+  }
 }
 </script>
 </body>
