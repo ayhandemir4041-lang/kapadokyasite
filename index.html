@@ -203,11 +203,6 @@ border-left: 1px solid var(--line); padding-left: 16px;
 transition: color 0.2s ease;
 }
 .copy-btn:hover{ color: var(--terracotta-bright); }
-.stat-row{
-display:flex; gap: 50px; margin-top: 44px; flex-wrap:wrap; justify-content:center;
-}
-.stat .num{ font-family:'Baloo 2', sans-serif; font-size: 1.7rem; color: var(--gold); }
-.stat .lbl{ font-size: 0.8rem; color: var(--sand-dim); }
 /* ---------- Section shell ---------- */
 section{ padding: 90px 6vw; position: relative; }
 .section-head{
@@ -388,25 +383,13 @@ Kapadokya Network
 <section class="hero">
 <img src="logo.png" alt="Kapadokya Network" class="hero-logo">
 <div class="hero-eyebrow">Bedrock Edition &middot; SkyBlock</div>
-<h1>Minecraft Bedrock'un en iyi sunucusu olan <span>Kapadokya Network</span>'e katıl.</h1>
+<h1>Minecraft Bedrock Skyblock Sunucu</h1>
 <p class="hero-sub">
-Peribacalarının arasında adalar kur, ekonomini büyüt, klanınla birlikte
-zirveye tırman. Sunucumuza katıl ve kaliteyi gör!
+Sen yoksan bir kişi eksiğiz!
 </p>
 <div class="hero-actions">
-<a href="#nasil-katilirim" class="cta-big">Şimdi Oyna</a>
+<a href="#" class="cta-big">Şimdi Oyna</a>
 <a href="magaza.html" class="cta-ghost">Mağaza</a>
-</div>
-<div class="ip-box">
-<div>
-<div class="value" id="ipValue">kapadokyanetwork.xyz</div>
-</div>
-<button class="copy-btn" onclick="copyIP()">Kopyala</button>
-</div>
-<div class="stat-row">
-<div class="stat"><div class="num">7</div><div class="lbl">Ada bölgesi</div></div>
-<div class="stat"><div class="num">%100</div><div class="lbl">Bedrock uyumlu</div></div>
-<div class="stat"><div class="num">7/24</div><div class="lbl">Aktif yayında</div></div>
 </div>
 </section>
 
@@ -423,12 +406,6 @@ zirveye tırman. Sunucumuza katıl ve kaliteyi gör!
 <div class="tag">Duyuru</div>
 <h3>Kapadokya Network kapılarını açıyor</h3>
 <p>İlk sezonumuz başlıyor — adanı kur, vadileri keşfet ve topluluğun bir parçası ol.</p>
-</div>
-<div class="news-card">
-<div class="thumb"><img src="logo.png" alt=""></div>
-<div class="tag">Güncelleme</div>
-<h3>N'aber kanka?</h3>
-<p>@kapadokyanetwork Instagram hesabımızı takip edebilir misinizzz.</p>
 </div>
 </div>
 </section>
@@ -477,17 +454,11 @@ zirveye tırman. Sunucumuza katıl ve kaliteyi gör!
 <img src="logo.png" alt="Kapadokya Network logosu">
 </div>
 <div>
-<h2>Kapadokya'dan ilham alan bir dünya</h2>
-<p>Kapadokya Network, Minecraft Bedrock oyuncuları için kurulan bir SkyBlock sunucusudur. Amacımız; Anadolu'nun eşsiz coğrafyasından ilham alan bir oyun dünyasında, adil ve keyifli bir deneyim sunmak.</p>
+<h2>Kapadokya Network'e Hoş Geldin</h2>
+<p>Kapadokya Network, Minecraft Bedrock oyuncuları için kurulan bir SkyBlock sunucusudur. Amacımız, adil ve keyifli bir oyun deneyimi sunmak.</p>
 <p>Sürekli gelişen içeriklerimiz ve oyuncu odaklı yaklaşımımızla, sadece bir sunucu değil, samimi bir topluluğun parçası olmanı hedefliyoruz.</p>
 </div>
 </div>
-</section>
-
-<section class="banner" id="nasil-katilirim">
-<h2>Bugün Adanı Kur</h2>
-<p>Bedrock istemcini aç, sunucu adresini gir, macera başlasın.</p>
-<a href="#" class="cta-big" onclick="copyIP(); return false;">kapadokyanetwork.xyz — Kopyala</a>
 </section>
 
 <footer>
@@ -496,7 +467,7 @@ zirveye tırman. Sunucumuza katıl ve kaliteyi gör!
 <img src="logo.png" alt="Kapadokya Network logosu" style="width:36px;height:36px;">
 Kapadokya Network
 </div>
-<p style="color:var(--sand-dim); max-width:36ch; font-size:0.9rem;">Bedrock oyuncuları için Anadolu'dan ilham alan SkyBlock deneyimi.</p>
+<p style="color:var(--sand-dim); max-width:36ch; font-size:0.9rem;">Bedrock oyuncuları için kurulan SkyBlock sunucusu.</p>
 </div>
 <div>
 <h4>Sunucu</h4>
@@ -537,17 +508,6 @@ document.body.style.overflow = '';
 }
 navToggle.addEventListener('click', openPanel);
 navClose.addEventListener('click', closePanel);
-
-function copyIP(){
-navigator.clipboard.writeText('kapadokyanetwork.xyz').then(() => {
-const btn = document.querySelector('.copy-btn');
-if(btn){
-const original = btn.textContent;
-btn.textContent = 'Kopyalandı!';
-setTimeout(() => { btn.textContent = original; }, 1500);
-}
-});
-}
 </script>
 </body>
 </html>
