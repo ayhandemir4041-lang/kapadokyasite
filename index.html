@@ -42,7 +42,6 @@ radial-gradient(ellipse 900px 500px at 15% -10%, rgba(217,119,47,0.16), transpar
 radial-gradient(ellipse 700px 500px at 90% 10%, rgba(226,87,31,0.10), transparent 55%),
 linear-gradient(180deg, #05070d 0%, #0a0d16 45%, #0c1018 100%);
 }
-/* ---------- Nav ---------- */
 header{
 position: sticky; top: 0; z-index: 50;
 display:flex; align-items:center; justify-content:space-between;
@@ -116,7 +115,6 @@ color: #1a0e05;
 transition: all 0.2s ease;
 }
 .cta-small:hover{ background: var(--terracotta-bright); }
-/* ---------- Hero ---------- */
 .hero{
 min-height: 78vh;
 display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -182,28 +180,18 @@ color: var(--sand);
 transition: all 0.2s ease;
 }
 .cta-ghost:hover{ border-color: var(--terracotta); color: var(--terracotta-bright); }
-.ip-box{
-margin-top: 34px;
-display:inline-flex; align-items:center; gap:16px;
-padding: 14px 24px;
-border: 1px solid var(--line);
-border-radius: 12px;
+.hero-welcome{
+margin-top: 60px;
+max-width: 680px;
+padding: 32px;
 background: var(--panel);
+border: 1px solid var(--line);
+border-radius: 16px;
+text-align: left;
 }
-.ip-box .value{
-font-family: 'Baloo 2', sans-serif;
-font-size: 1.1rem;
-color: var(--terracotta-bright);
-font-weight:700;
-}
-.copy-btn{
-background:none; border:none; color: var(--sand-dim);
-cursor:pointer; font-family:inherit; font-size:0.85rem; font-weight:700;
-border-left: 1px solid var(--line); padding-left: 16px;
-transition: color 0.2s ease;
-}
-.copy-btn:hover{ color: var(--terracotta-bright); }
-/* ---------- Section shell ---------- */
+.hero-welcome h2{ font-size: 1.4rem; margin-bottom: 14px; color: var(--sand); }
+.hero-welcome p{ color: var(--sand-dim); margin-bottom: 12px; font-size: 0.96rem; }
+.hero-welcome p:last-child{ margin-bottom: 0; }
 section{ padding: 90px 6vw; position: relative; }
 .section-head{
 display:flex; align-items:flex-end; justify-content:space-between;
@@ -212,7 +200,6 @@ gap: 20px; flex-wrap: wrap;
 }
 .section-head h2{ font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .section-head p{ max-width: 40ch; color: var(--sand-dim); font-size: 0.96rem; margin-top:6px; }
-/* ---------- Cards ---------- */
 .card-grid{
 display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 22px;
 }
@@ -235,7 +222,6 @@ margin-bottom: 18px;
 }
 .card h3{ font-size: 1.1rem; margin-bottom: 10px; }
 .card p{ color: var(--sand-dim); font-size: 0.92rem; }
-/* ---------- News ---------- */
 .news-grid{
 display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px;
 }
@@ -259,7 +245,6 @@ font-size: 0.75rem; font-weight:700;
 }
 .news-card h3{ margin: 12px 20px 8px; font-size: 1.05rem; }
 .news-card p{ margin: 0 20px 20px; color: var(--sand-dim); font-size: 0.9rem; }
-/* ---------- Leaderboard ---------- */
 .board-tabs{ display:flex; gap:10px; margin-bottom: 26px; }
 .board-tab{
 padding: 8px 18px; border-radius: 20px; font-size:0.85rem; font-weight:700;
@@ -283,25 +268,6 @@ border-bottom: 1px solid var(--line);
 .board-row .rank{ color: var(--terracotta-bright); }
 .board-row .amt{ color: var(--gold); font-weight:700; }
 .empty-note{ margin-top: 20px; color: var(--sand-dim); font-size:0.85rem; text-align:center; }
-/* ---------- About ---------- */
-.about{ display:grid; grid-template-columns: 340px 1fr; gap: 50px; align-items:center; }
-.about-visual{
-aspect-ratio: 1; border-radius: 20px;
-background: var(--panel); border:1px solid var(--line);
-display:flex; align-items:center; justify-content:center;
-}
-.about-visual img{ width: 70%; opacity:0.85; }
-.about h2{ margin-bottom: 18px; }
-.about p{ color: var(--sand-dim); margin-bottom: 14px; font-size:0.98rem; }
-/* ---------- Banner ---------- */
-.banner{
-text-align:center;
-background: linear-gradient(135deg, rgba(217,119,47,0.14), rgba(226,87,31,0.08));
-border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-}
-.banner h2{ margin-bottom: 14px; }
-.banner p{ color: var(--sand-dim); max-width: 46ch; margin: 0 auto 30px; }
-/* ---------- Footer ---------- */
 footer{
 padding: 60px 6vw 30px;
 display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
@@ -322,8 +288,6 @@ nav, .cta-small{ display:none; }
 .card-grid{ grid-template-columns: 1fr; }
 .news-grid{ grid-template-columns: 1fr; }
 .board-wrap{ grid-template-columns: 1fr; }
-.about{ grid-template-columns: 1fr; }
-.about-visual{ order: -1; max-width: 280px; margin: 0 auto; }
 footer{ grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce){
@@ -346,7 +310,6 @@ Kapadokya Network
 <li><a href="magaza.html">Mağaza</a></li>
 <li><a href="#topluluk">Liderlik</a></li>
 <li><a href="#haberler">Haberler</a></li>
-<li><a href="#hakkinda">Hakkımızda</a></li>
 </ul>
 </nav>
 <div style="display:flex; align-items:center; gap:16px;">
@@ -372,7 +335,6 @@ Kapadokya Network
 <li><a href="magaza.html">Mağaza</a></li>
 <li><a href="#topluluk">Liderlik</a></li>
 <li><a href="#haberler">Haberler</a></li>
-<li><a href="#hakkinda">Hakkımızda</a></li>
 <li><a href="#">Destek</a></li>
 <li><a href="#">Oy Ver</a></li>
 <li><a href="#">Giriş Yap</a></li>
@@ -391,6 +353,11 @@ Sen yoksan bir kişi eksiğiz!
 <a href="#" class="cta-big">Şimdi Oyna</a>
 <a href="magaza.html" class="cta-ghost">Mağaza</a>
 </div>
+<div class="hero-welcome">
+<h2>Kapadokya Network'e Hoş Geldin</h2>
+<p>Kapadokya Network, Minecraft Bedrock oyuncuları için kurulan bir SkyBlock sunucusudur. Amacımız, adil ve keyifli bir oyun deneyimi sunmak.</p>
+<p>Sürekli gelişen içeriklerimiz ve oyuncu odaklı yaklaşımımızla, sadece bir sunucu değil, samimi bir topluluğun parçası olmanı hedefliyoruz.</p>
+</div>
 </section>
 
 <section id="haberler">
@@ -405,7 +372,7 @@ Sen yoksan bir kişi eksiğiz!
 <div class="thumb"><img src="logo.png" alt=""></div>
 <div class="tag">Duyuru</div>
 <h3>Kapadokya Network kapılarını açıyor</h3>
-<p>İlk sezonumuz başlıyor — sende hemen sunucumuza katıl,topluluğun bir parçası ol.</p>
+<p>İlk sezonumuz başlıyor — sende hemen sunucumuza katıl, topluluğun bir parçası ol.</p>
 </div>
 </div>
 </section>
@@ -445,20 +412,6 @@ Sen yoksan bir kişi eksiğiz!
 <div class="board-row"><div class="who"><span class="rank">•</span><span class="name">—</span></div><span class="amt">—</span></div>
 </div>
 </div>
-<p class="empty-note">.</p>
-</section>
-
-<section id="hakkinda">
-<div class="about">
-<div class="about-visual">
-<img src="logo.png" alt="Kapadokya Network logosu">
-</div>
-<div>
-<h2>Kapadokya Network'e Hoş Geldin</h2>
-<p>Kapadokya Network, Minecraft Bedrock oyuncuları için kurulan bir SkyBlock sunucusudur. Amacımız, adil ve keyifli bir oyun deneyimi sunmak.</p>
-<p>Sürekli gelişen içeriklerimiz ve oyuncu odaklı yaklaşımımızla, sadece bir sunucu değil, samimi bir topluluğun parçası olmanı hedefliyoruz.</p>
-</div>
-</div>
 </section>
 
 <footer>
@@ -475,7 +428,6 @@ Kapadokya Network
 <li><a href="magaza.html">Mağaza</a></li>
 <li><a href="#topluluk">Liderlik</a></li>
 <li><a href="#haberler">Haberler</a></li>
-<li><a href="#hakkinda">Hakkımızda</a></li>
 </ul>
 </div>
 <div>
