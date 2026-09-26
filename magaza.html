@@ -8,17 +8,18 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root{
-  --bg: #0a0d16;
-  --bg-2: #0f1420;
-  --panel: #131a29;
-  --panel-2: #171f31;
-  --line: rgba(233,167,110,0.14);
-  --sand: #f1e6d3;
-  --sand-dim: #9aa3b8;
-  --terracotta: #d9772f;
-  --terracotta-bright: #f2934a;
-  --ember: #e2571f;
-  --gold: #f0b545;
+  --bg: #f0e4c8;
+  --bg-2: #f7efd9;
+  --panel: #f7efd9;
+  --panel-2: #fbe9d3;
+  --line: #e2d3ab;
+  --sand: #3a2e1e;
+  --sand-dim: #8a7a5c;
+  --terracotta: #d97b2e;
+  --terracotta-bright: #e8903f;
+  --ember: #c8611e;
+  --gold: #d97b2e;
+  --on-accent: #fffbf1;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -34,19 +35,19 @@ h1,h2,h3,.display{
   font-weight: 700;
 }
 a{color:inherit; text-decoration:none;}
-::selection{ background: var(--terracotta); color: var(--bg); }
+::selection{ background: var(--terracotta); color: var(--on-accent); }
 .sky{
   position: fixed; inset: 0; z-index: -2;
   background:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(217,119,47,0.16), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 90% 10%, rgba(226,87,31,0.10), transparent 55%),
-    linear-gradient(180deg, #05070d 0%, #0a0d16 45%, #0c1018 100%);
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(217,123,46,0.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 90% 10%, rgba(200,97,30,0.08), transparent 55%),
+    var(--bg);
 }
 header{
   position: sticky; top: 0; z-index: 50;
   display:flex; align-items:center; justify-content:space-between;
   padding: 16px 6vw;
-  background: rgba(10,13,22,0.9);
+  background: rgba(247,239,217,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -59,7 +60,7 @@ header{
   width: 42px; height: 42px;
   border-radius: 50%;
   flex-shrink:0;
-  box-shadow: 0 0 0 2px rgba(240,181,69,0.4);
+  box-shadow: 0 0 0 2px rgba(217,123,46,0.4);
 }
 nav ul{ display:flex; gap: 28px; list-style:none; }
 nav a{
@@ -67,7 +68,7 @@ nav a{
   color: var(--sand-dim);
   transition: color 0.2s ease;
 }
-nav a:hover, nav a.active{ color: var(--terracotta-bright); }
+nav a:hover, nav a.active{ color: var(--terracotta); }
 .nav-toggle{
   display:none; background:none; border:none; cursor:pointer;
   width: 34px; height: 34px; position: relative; flex-shrink: 0;
@@ -103,7 +104,7 @@ nav a:hover, nav a.active{ color: var(--terracotta-bright); }
   font-family:'Baloo 2', sans-serif; font-size: 1.35rem; font-weight:600;
   color: var(--sand);
 }
-.mobile-panel a:hover{ color: var(--terracotta-bright); }
+.mobile-panel a:hover{ color: var(--terracotta); }
 .mobile-panel .foot-note{ margin-top: 40px; color: var(--sand-dim); font-size: 0.85rem; }
 .cta-small{
   padding: 10px 20px;
@@ -111,7 +112,7 @@ nav a:hover, nav a.active{ color: var(--terracotta-bright); }
   border-radius: 8px;
   font-size: 0.88rem;
   font-weight: 700;
-  color: #1a0e05;
+  color: var(--on-accent);
   transition: all 0.2s ease;
 }
 .cta-small:hover{ background: var(--terracotta-bright); }
@@ -125,9 +126,9 @@ nav a:hover, nav a.active{ color: var(--terracotta-bright); }
   display:inline-block;
   padding: 6px 16px;
   border-radius: 20px;
-  background: rgba(217,119,47,0.15);
-  border: 1px solid rgba(217,119,47,0.35);
-  color: var(--terracotta-bright);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--terracotta);
   font-size: 0.82rem;
   font-weight: 700;
   margin-bottom: 18px;
@@ -160,26 +161,26 @@ section.store{ padding: 40px 6vw 100px; }
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .pack:hover{ transform: translateY(-4px); border-color: var(--terracotta); }
-.pack.popular{ border-color: var(--terracotta-bright); }
+.pack.popular{ border-color: var(--terracotta); border-width: 2px; }
 .pack .badge{
   position:absolute; top:-13px; left:50%; transform:translateX(-50%);
   background: linear-gradient(135deg, var(--terracotta-bright), var(--ember));
-  color:#1a0e05; font-size:0.72rem; font-weight:800;
+  color: var(--on-accent); font-size:0.72rem; font-weight:800;
   padding: 5px 14px; border-radius: 20px;
   white-space:nowrap;
 }
 .pack .coin{
   width: 64px; height: 64px; margin: 0 auto 18px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, var(--gold), var(--terracotta));
+  background: radial-gradient(circle at 35% 30%, var(--terracotta-bright), var(--ember));
   display:flex; align-items:center; justify-content:center;
-  font-family:'Baloo 2',sans-serif; font-weight:800; color:#1a0e05; font-size:1.3rem;
-  box-shadow: 0 10px 24px rgba(226,87,31,0.3);
+  font-family:'Baloo 2',sans-serif; font-weight:800; color: var(--on-accent); font-size:1.3rem;
+  box-shadow: 0 10px 24px rgba(200,97,30,0.25);
 }
 .pack h3{ font-size: 1.2rem; margin-bottom: 6px; }
 .pack .desc{ color: var(--sand-dim); font-size:0.88rem; margin-bottom: 20px; }
 .pack .price{
-  font-family:'Baloo 2',sans-serif; font-size: 2rem; color: var(--gold); font-weight:800;
+  font-family:'Baloo 2',sans-serif; font-size: 2rem; color: var(--terracotta); font-weight:800;
   margin-bottom: 22px;
 }
 .pack .price span{ font-size:0.95rem; color: var(--sand-dim); font-weight:600; }
@@ -188,14 +189,14 @@ section.store{ padding: 40px 6vw 100px; }
   width:100%;
   padding: 14px 20px;
   background: linear-gradient(135deg, var(--terracotta-bright), var(--ember));
-  color: #1a0e05;
+  color: var(--on-accent);
   font-weight: 800;
   border-radius: 10px;
   font-size: 1rem;
-  box-shadow: 0 10px 26px rgba(226,87,31,0.3);
+  box-shadow: 0 10px 26px rgba(200,97,30,0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.buy-btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 32px rgba(226,87,31,0.4); }
+.buy-btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 32px rgba(200,97,30,0.35); }
 
 .info-note{
   max-width: 900px; margin: 40px auto 0;
@@ -216,7 +217,7 @@ footer{
 footer h4{ font-size:0.9rem; margin-bottom:16px; color: var(--sand); }
 footer ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
 footer a{ color: var(--sand-dim); font-size: 0.9rem; transition:color 0.2s ease; }
-footer a:hover{ color: var(--terracotta-bright); }
+footer a:hover{ color: var(--terracotta); }
 .foot-bottom{
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
   padding: 20px 6vw 40px; color: var(--sand-dim); font-size:0.78rem;
